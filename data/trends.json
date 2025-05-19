@@ -1,0 +1,51 @@
+[
+  {
+    "id": "vacuum_packed",
+    "name": "Вакуумный пакет",
+    "description": "Фотографии продукта в вакуумной упаковке на черном фоне",
+    "image": "asset/img/trends/vacuum.jpg",
+    "prompt": "Vacuum packed [PRODUCT], studio product photography, hyperrealistic textures, hard plastic reflections, soft studio lighting, centered composition, highly detailed, black background, modern and stylish composition, high contrast, deep black."
+  },
+  {
+    "id": "comic_pattern",
+    "name": "Комикс-паттерн",
+    "description": "Бесшовный паттерн в стиле ретро-комиксов",
+    "image": "asset/img/trends/comic_pattern.jpg",
+    "prompt": "Transform the provided photo into a stylized seamless illustrated pattern. Emulate the exact artistic style of retro comics with distorted cartoon texture - bold black outlines, flat exotic black-white color palette, halftone shadows, thick lines and surreal liquid distortions. Recreate the subject's face in various distorted, stretched, melted and twisted expressions with smug, sleepy or sarcastic gaze like in vintage Garfield comics. Arrange faces in a dense organic composition - no background objects, no bodies, just distorted human or character heads. Fill the frame with faces of different shapes and angles, separated by sticky, wavy borders of white fluid that give the work a psychedelic, absurd and humorous tone. Keep colors simple and bold: primarily exotic black/white tones for faces, dark for background, no gradients or realistic shadows - just flat colors and comic textures. Maintain the exact caricature/illustrative style of the provided reference image (Garfield-style heads). The goal is to turn the subject into a fun, hand-drawn comic version of itself."
+  },
+  {
+    "id": "3d_text_effects",
+    "name": "3D Текст",
+    "description": "3D рендер текста с цветовой схемой и эффектами",
+    "image": "asset/img/trends/3d_text.jpg",
+    "prompt": "A 3D rendered cinematic shot of the text [TEXT] in a [COLOR1] and [COLOR2] color scheme. The text is placed on a textured [BACKGROUND_DESC]. There's a blurred landscape background. The image is surrounded by geometric shapes. The image has a glitch effect."
+  },
+  {
+    "id": "gashapon_capsules",
+    "name": "Капсулы гашапона",
+    "description": "Диорама предмета внутри японской капсулы гашапона",
+    "image": "asset/img/trends/gashapon.jpg",
+    "prompt": "Create a portrait ratio photo. Highly detailed diorama in the shape of a gashapon capsule, neatly held between index and thumb fingers, featuring [ITEM_NAME] inside the capsule. [ITEM_DETAILS]. Capsule design: glass wall, blue-silver podium at the bottom with engraved text. Cinematic lighting, miniature scale, diorama aesthetics, ultra-detailed with soft blue gradient background, bokeh, motion elements, soft focus, portrait ratio, photorealistic."
+  },
+  {
+    "id": "vintage_packaging_tulips",
+    "name": "Винтаж",
+    "description": "Коллекционная игрушка в картонной упаковке с тюльпанами",
+    "image": "asset/img/trends/vintage_package.jpg",
+    "prompt": "Unique collectible toy on flat cardboard packaging with bulging plastic on top featuring a full-body figure of [CHARACTER_NAME]. The packaging has spring tulips in the background, with a bold calligraphic name. Inspired by vintage toys in a modern style."
+  },
+  {
+    "id": "action_figure_accessories",
+    "name": "Экшн-фигурка",
+    "description": "Реалистичная фигурка в коробке с аксессуарами",
+    "image": "asset/img/trends/action_figure.jpg",
+    "prompt": "Create a toy based on [CHARACTER_NAME] in action figure format. The figure is full-length and is inside a black box on the left side, place accessories on the right side next to it: MacBook, AirPods, iPhone, notebook, plane tickets. The figure has the exact appearance from the reference. Highly realistic packaging design with clear window showing the figure."
+  },
+  {
+    "id": "bratz_doll_blister",
+    "name": "Bratz-кукла",
+    "description": "Коллекционная кукла в стиле Bratz в блистерной упаковке",
+    "image": "asset/img/trends/bratz.jpg",
+    "prompt": "Collectible, expensive 3D action figure made of soft touch plastic. Full-length character of [CHARACTER_NAME]. Completely copy the appearance from the reference. Style - cartoonish, like Bratz. The doll lies in a plastic recess along the silhouette. Box: transparent plastic + cardboard back part. Nearby - accessories: computer, tulips, notebook - all photorealistic, like miniature real things. Toy in stylish packaging."
+  }
+]

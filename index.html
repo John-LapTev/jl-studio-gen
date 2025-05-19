@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JL-Studio Gen - Генератор изображений</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Favicon (не забудьте создать и добавить) -->
+    <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header>
+        <div class="header-left">
+            <a href="https://jl-studio.art/" class="logo" target="_blank">
+                <span>JL-</span><span class="accent">Studio</span><span> Gen</span>
+            </a>
+        </div>
+        <div class="social-links">
+            <a href="https://t.me/JL_Stable_Diffusion" class="social-link" target="_blank" title="Telegram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.287 5.906c-.778.324-2.334.994-4.666 2.01-.378.15-.577.298-.595.442-.03.243.275.339.69.47l.175.055c.408.133.958.288 1.243.294.26.006.549-.1.868-.32 2.179-1.471 3.304-2.214 3.374-2.23.05-.012.12-.026.166.016.047.041.042.12.037.141-.03.129-1.227 1.241-1.846 1.817-.193.18-.33.307-.358.336a8.154 8.154 0 0 1-.188.186c-.38.366-.664.64.015 1.088.327.216.589.393.85.571.284.194.568.387.936.629.093.06.183.125.27.187.331.236.63.448.997.414.214-.02.435-.22.547-.82.265-1.417.786-4.486.906-5.751a1.426 1.426 0 0 0-.013-.315.337.337 0 0 0-.114-.217.526.526 0 0 0-.31-.093c-.3.005-.763.166-2.984 1.09z"></path>
+                </svg>
+            </a>
+            <a href="https://youtube.com/@cheesez_crazy" class="social-link" target="_blank" title="YouTube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"></path>
+                </svg>
+            </a>
+            <a href="http://instagram.com/john_laptev" class="social-link" target="_blank" title="Instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.917 3.917 0 0 0-1.417.923A3.927 3.927 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.916 3.916 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.926 3.926 0 0 0-.923-1.417A3.911 3.911 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0h.003zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599.28.28.453.546.598.92.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.47 2.47 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.478 2.478 0 0 1-.92-.598 2.48 2.48 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233 0-2.136.008-2.388.046-3.231.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92.28-.28.546-.453.92-.598.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045v.002zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92zm-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217zm0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334z"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Основная галерея -->
+    <div class="main-container">
+        <div class="gallery-section">
+            <div class="section-title">
+                <h2>Ваши изображения</h2>
+                <!-- Можно добавить кнопку для фильтрации/сортировки галереи -->
+            </div>
+            
+            <div class="gallery-grid" id="gallery-grid">
+                <!-- Изображения будут добавляться сюда динамически -->
+                <!-- Пример элемента галереи (будет заменен реальными данными) -->
+                <!--
+                <div class="gallery-item" data-image-id="123">
+                    <img src="asset/img/placeholder.jpg" alt="Сгенерированное изображение">
+                    <div class="gallery-item-overlay">
+                        <span class="gallery-item-prompt-preview">Аниме персонаж...</span>
+                    </div>
+                    <div class="gallery-item-actions">
+                        <button class="gallery-action regenerate-btn" title="Перегенерировать">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                            </svg>
+                        </button>
+                        <button class="gallery-action copy-prompt-btn" title="Копировать промт">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/>
+                                <path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/>
+                            </svg>
+                        </button>
+                        <button class="gallery-action use-settings-btn" title="Использовать настройки">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/>
+                                <path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.377l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/>
+                            </svg>
+                        </button>
+                        <button class="gallery-action delete-btn" title="Удалить">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                -->
+                 <div class="gallery-empty" id="gallery-empty">
+                    <p>Здесь будут отображаться ваши сгенерированные изображения.</p>
+                    <p>Начните с ввода промта и добавления референсов в панели ниже.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Уведомления (контейнер) -->
+    <div id="notification-container" style="position: fixed; top: 20px; right: 20px; z-index: 2000; display: flex; flex-direction: column; gap: 10px;">
+        <!-- Уведомления будут добавляться сюда -->
+    </div>
+
+
+    <!-- Панель генерации (снизу) -->
+    <div class="generator-panel-wrapper" id="generator-panel-wrapper">
+        <div class="generator-panel" id="generator-panel">
+            <!-- Содержимое .generator-panel БЕЗ .generator-handle -->
+            
+            <!-- Референсы -->
+            <div class="refs-header">
+                <div class="refs-title">Референсы (<span id="reference-count">0</span>/5)</div>
+                <button class="clear-refs" id="clear-all-refs-btn" style="display: none;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                    Очистить все референсы
+                </button>
+            </div>
+            <div class="upload-refs" id="upload-refs-container">
+                <div class="add-ref" id="add-ref-btn">+</div>
+            </div>
+            
+            <!-- Опции -->
+            <div class="options-bar">
+                <div class="option-group">
+                    <button class="option-btn" id="styles-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M14 4.5V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5zm-3 0A1.5 1.5 0 0 1 9.5 3V1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V4.5z"/>
+                            <path d="M4.5 12.5A.5.5 0 0 1 5 12h3a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5m0-2A.5.5 0 0 1 5 10h6a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5m1.639-3.708 1.33.886 1.854-1.855a.25.25 0 0 1 .289-.047l1.888.974V7.5a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V7s1.54-1.274 1.639-1.208M6.25 5a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5"/>
+                        </svg>
+                        <span>Стили</span>
+                    </button>
+                    <button class="option-btn" id="trends-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M4 1h8a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V3a2 2 0 0 1 2-2m0 1a1 1 0 0 0-1 1v10a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V3a1 1 0 0 0-1-1zM6 7.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm0-2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1zm0 5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1z"/>
+                        </svg>
+                        <span>Тренды</span>
+                    </button>
+                    <button class="option-btn" id="sizes-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                        </svg>
+                        <span>Размер: 1024×1024</span>
+                    </button>
+                    <button class="option-btn" id="count-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M4 11H2v3h2v-3zm5-4H7v7h2V7zm5-5v12h-2V2h2zm-2-1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h2a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1h-2zM6 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm-5 4a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-3z"/>
+                        </svg>
+                        <span>Количество: 1</span>
+                    </button>
+                    <button class="option-btn" id="settings-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M6 1a1.5 1.5 0 0 0-1.5 1.5H13a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5A1.5 1.5 0 0 0 1 2a1.5 1.5 0 1 0 0 3h14a1.5 1.5 0 0 0 0-3H7.5A1.5 1.5 0 0 0 6 1"/>
+                        </svg>
+                        <span>Настройки</span>
+                    </button>
+                </div>
+                <div class="option-group">
+                    <button class="option-btn" id="models-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                            <path d="M11.251.068a.5.5 0 0 1 .227.58L9.677 6.5H13a.5.5 0 0 1 .364.843l-8 8.5a.5.5 0 0 1-.842-.49L6.323 9.5H3a.5.5 0 0 1-.364-.843l8-8.5a.5.5 0 0 1 .615-.09z"/>
+                        </svg>
+                        <span>Модель: flux</span>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Улучшение промта с помощью ИИ -->
+            <div class="prompt-config">
+                <label class="toggle-container">
+                    <span class="toggle">
+                        <input type="checkbox" id="enhance-prompt-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </span>
+                    <span class="toggle-label">Улучшить промт с помощью ИИ</span>
+                </label>
+            </div>
+            
+            <!-- Поле ввода промта и генерация -->
+            <div class="generator-footer">
+                <div class="input-group">
+                    <textarea class="prompt-input" id="prompt-input" placeholder="Опишите то, что хотите сгенерировать..." rows="1"></textarea>
+                    <div class="prompt-hint">Ваш текст будет автоматически переведен на английский для лучших результатов</div>
+                </div>
+                
+                <div style="display: flex; align-items: center;">
+                    <button class="preview-btn" id="preview-prompt-btn-main">Предпросмотр промта</button>
+                    <button class="generate-btn" id="generate-btn">Сгенерировать</button>
+                </div>
+            </div>
+        </div> <!-- Конец .generator-panel -->
+    </div> <!-- Конец .generator-panel-wrapper -->
+
+    <!-- Ручка панели генератора (теперь ОТДЕЛЬНЫЙ элемент ПОСЛЕ wrapper'а) -->
+    <div class="generator-handle" id="generator-handle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16" class="handle-arrow">
+            <path d="M7.646 4.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1-.708.708L8 5.707l-5.646 5.647a.5.5 0 0 1-.708-.708l6-6z"/>
+        </svg>
+        <span>Генератор изображений</span>
+    </div>
+
+    <!-- Модальное окно просмотра изображения (из галереи) -->
+    <div class="modal-overlay" id="image-details-modal">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Просмотр изображения</h3>
+                <button class="modal-close" data-modal-id="image-details-modal">×</button>
+            </div>
+            <div class="modal-content">
+                <div class="image-preview">
+                    <img id="modal-image-preview-src" src="asset/img/placeholder.jpg" alt="Просмотр изображения">
+                </div>
+                <div class="image-info">
+                    <div class="info-section">
+                        <div class="info-label">Промт</div>
+                        <div class="info-value" id="modal-image-prompt"></div>
+                    </div>
+                    <div class="info-section">
+                        <div class="info-label">Модель</div>
+                        <div class="info-value" id="modal-image-model"></div>
+                    </div>
+                    <div class="info-section">
+                        <div class="info-label">Размер</div>
+                        <div class="info-value" id="modal-image-size"></div>
+                    </div>
+                    <div class="info-section">
+                        <div class="info-label">Сид</div>
+                        <div class="info-value" id="modal-image-seed"></div>
+                    </div>
+                    <div class="info-section">
+                        <div class="info-label">Дата создания</div>
+                        <div class="info-value" id="modal-image-date"></div>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <button class="action-btn" id="modal-download-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5"/>
+                                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708z"/>
+                            </svg>
+                            Скачать
+                        </button>
+                        <button class="action-btn" id="modal-regenerate-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                <path d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+                                <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+                            </svg>
+                            Регенерация
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно настроек референса -->
+    <div class="modal-overlay" id="ref-settings-modal">
+        <div class="modal-container ref-modal-container">
+            <div class="modal-header">
+                <h3 class="modal-title">Настройки референса</h3>
+                <button class="modal-close" data-modal-id="ref-settings-modal">×</button>
+            </div>
+            <div class="modal-content">
+                <div class="ref-preview">
+                    <img id="ref-modal-preview-img" src="asset/img/placeholder.jpg" alt="Референс">
+                    
+                    <div class="ref-controls">
+                        <div class="ref-control-group">
+                            <div class="ref-control-label">Тип изображения:</div>
+                            <select id="ref-modal-type-select" class="ref-type-select">
+                                <option value="Персонаж">Персонаж</option>
+                                <option value="Место">Место</option>
+                                <option value="Стиль">Стиль</option>
+                                <option value="Предмет">Предмет</option>
+                                <option value="Другое">Другое</option>
+                            </select>
+                        </div>
+                        
+                        <div class="ref-control-group">
+                            <div class="ref-control-label">Чувствительность (слов):</div>
+                            <input type="range" id="ref-modal-sensitivity-slider" min="0" max="50" value="15" class="ref-sensitivity-slider" style="flex-grow: 1;">
+                            <div id="ref-modal-sensitivity-value" class="sensitivity-value" style="text-align: center; min-width: 60px;">15 слов</div>
+                        </div>
+                        
+                        <div class="modal-actions">
+                            <button class="action-btn" id="ref-modal-apply-btn">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+                                </svg>
+                                Применить
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно настроек генерации -->
+    <div class="settings-modal" id="settings-modal">
+        <div class="settings-header">
+            <h3 class="settings-title">Настройки генерации</h3>
+            <button class="settings-close" data-modal-id="settings-modal">×</button>
+        </div>
+        
+        <div class="settings-section">
+            <h4 class="settings-section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+                </svg>
+                Настройка seed
+            </h4>
+            <div class="seed-control">
+                <input type="number" class="seed-input" id="seed-input" placeholder="Seed" min="0" max="9999999999" value="12345">
+                <label class="toggle-container">
+                    <span class="toggle">
+                        <input type="checkbox" id="random-seed-toggle" checked>
+                        <span class="toggle-slider"></span>
+                    </span>
+                    <span class="toggle-label">Случайный seed</span>
+                </label>
+            </div>
+            <div class="seed-info">Текущий seed для следующей генерации: <span id="current-seed-display">Случайный</span></div>
+        </div>
+        
+        <div class="settings-section">
+            <h4 class="settings-section-title">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg>
+                Сохранение элементов из оригинала
+            </h4>
+            <div class="preserve-options">
+                <div class="preserve-description">
+                    Эти настройки позволяют контролировать, какие элементы из загруженных референсных изображений будут сохранены при генерации. Особенно эффективны для изображений типа "Персонаж".
+                </div>
+                <div class="preserve-checkboxes">
+                    <label class="preserve-checkbox">
+                        <input type="checkbox" id="preserve-composition" checked>
+                        <div>
+                            <div class="preserve-checkbox-label">Композиция</div>
+                            <div class="preserve-checkbox-info">Сохраняет общее расположение элементов и позу персонажа</div>
+                        </div>
+                    </label>
+                    <label class="preserve-checkbox">
+                        <input type="checkbox" id="preserve-face" checked>
+                        <div>
+                            <div class="preserve-checkbox-label">Черты лица</div>
+                            <div class="preserve-checkbox-info">Сохраняет характерные черты и выражение лица персонажа</div>
+                        </div>
+                    </label>
+                    <label class="preserve-checkbox">
+                        <input type="checkbox" id="preserve-colors" checked>
+                        <div>
+                            <div class="preserve-checkbox-label">Цвета</div>
+                            <div class="preserve-checkbox-info">Сохраняет цветовую палитру и тональность исходного изображения</div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно предпросмотра промта -->
+    <div class="prompt-preview-modal" id="prompt-preview-modal">
+        <div class="prompt-preview-header">
+            <h3 class="prompt-preview-title">Предпросмотр промта</h3>
+            <button class="prompt-preview-close" data-modal-id="prompt-preview-modal">×</button>
+        </div>
+        
+        <div class="prompt-preview-content" id="prompt-preview-content-area">
+            <!-- Сюда будет загружен сгенерированный промт -->
+        </div>
+        
+        <textarea class="prompt-edit-textarea" id="prompt-edit-textarea-main"></textarea>
+        
+        <div class="prompt-preview-actions" id="prompt-preview-initial-actions">
+            <button class="prompt-preview-edit-btn" id="edit-prompt-btn-modal">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+                </svg>
+                Редактировать промт
+            </button>
+        </div>
+        
+        <div class="prompt-edit-actions" id="prompt-edit-actions-modal">
+            <button class="prompt-edit-cancel" id="cancel-edit-btn-modal">Отмена</button>
+            <button class="prompt-edit-save" id="save-edit-btn-modal">Сохранить</button>
+        </div>
+    </div>
+
+    <!-- Модальное окно моделей -->
+    <div class="models-modal" id="models-modal">
+        <div class="models-header">
+            <h3 class="models-title">Выберите модель</h3>
+            <button class="models-close" data-modal-id="models-modal">×</button>
+        </div>
+        <div class="models-list" id="models-list-container">
+            <!-- Модели будут загружены сюда -->
+        </div>
+    </div>
+
+    <!-- Модальное окно стилей -->
+    <div class="styles-modal" id="styles-modal">
+        <div class="styles-header">
+            <h3 class="styles-title">Выберите стиль</h3>
+            <button class="styles-close" data-modal-id="styles-modal">×</button>
+        </div>
+        <div class="styles-grid" id="styles-grid-container">
+            <!-- Стили будут загружены сюда -->
+        </div>
+    </div>
+
+    <!-- Модальное окно трендов -->
+    <div class="trends-modal" id="trends-modal">
+        <div class="trends-header">
+            <h3 class="trends-title">Выберите тренд</h3>
+            <button class="trends-close" data-modal-id="trends-modal">×</button>
+        </div>
+        <div class="trends-grid" id="trends-grid-container">
+            <!-- Тренды будут загружены сюда -->
+        </div>
+    </div>
+
+    <!-- Модальное окно размеров (обновленное) -->
+    <div class="sizes-modal" id="sizes-modal">
+        <div class="modal-header">
+            <h3 class="sizes-title">Выберите размер изображения</h3>
+            <button class="sizes-close" data-modal-id="sizes-modal">×</button>
+        </div>
+        
+        <div class="modal-content" style="padding: 24px; overflow-y: auto;">
+            <!-- Табы с категориями -->
+            <div class="size-categories">
+                <button class="size-category-tab active" data-category="all">Все</button>
+                <button class="size-category-tab" data-category="landscape">Пейзажные</button>
+                <button class="size-category-tab" data-category="portrait">Портретные</button>
+                <button class="size-category-tab" data-category="square">Квадратные</button>
+            </div>
+            
+            <!-- Размеры с иконками -->
+            <div class="ratio-buttons" id="ratio-buttons-container">
+                <!-- Квадратные -->
+                <div class="ratio-category" data-category="square">
+                    <h4 class="ratio-category-title">Квадратные</h4>
+                    <div class="ratio-row">
+                        <button class="ratio-btn active" data-width="1024" data-height="1024" data-category="square">
+                            <div class="ratio-icon square"></div>
+                            <div class="ratio-label">1:1 (1024×1024)</div>
+                            <div class="ratio-hint">Стандартный размер</div>
+                        </button>
+                        <button class="ratio-btn" data-width="512" data-height="512" data-category="square">
+                            <div class="ratio-icon square"></div>
+                            <div class="ratio-label">1:1 (512×512)</div>
+                            <div class="ratio-hint">Экономичный</div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Пейзажные (горизонтальные) -->
+                <div class="ratio-category" data-category="landscape">
+                    <h4 class="ratio-category-title">Пейзажные (горизонтальные)</h4>
+                    <div class="ratio-row">
+                        <button class="ratio-btn" data-width="1152" data-height="896" data-category="landscape">
+                            <div class="ratio-icon landscape"></div>
+                            <div class="ratio-label">4:3 (1152×896)</div>
+                            <div class="ratio-hint">Классическое фото</div>
+                        </button>
+                        <button class="ratio-btn" data-width="1344" data-height="768" data-category="landscape">
+                            <div class="ratio-icon wide"></div>
+                            <div class="ratio-label">16:9 (1344×768)</div>
+                            <div class="ratio-hint">Широкоэкранное</div>
+                        </button>
+                    </div>
+                    <div class="ratio-row">
+                        <button class="ratio-btn" data-width="1536" data-height="640" data-category="landscape">
+                            <div class="ratio-icon ultrawide"></div>
+                            <div class="ratio-label">21:9 (1536×640)</div>
+                            <div class="ratio-hint">Ультраширокое</div>
+                        </button>
+                        <button class="ratio-btn" data-width="1280" data-height="720" data-category="landscape">
+                            <div class="ratio-icon wide"></div>
+                            <div class="ratio-label">16:9 (1280×720)</div>
+                            <div class="ratio-hint">HD формат</div>
+                        </button>
+                    </div>
+                    <div class="ratio-row">
+                        <button class="ratio-btn" data-width="1920" data-height="1080" data-category="landscape">
+                            <div class="ratio-icon wide"></div>
+                            <div class="ratio-label">16:9 (1920×1080)</div>
+                            <div class="ratio-hint">Full HD</div>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Портретные (вертикальные) -->
+                <div class="ratio-category" data-category="portrait">
+                    <h4 class="ratio-category-title">Портретные (вертикальные)</h4>
+                    <div class="ratio-row">
+                        <button class="ratio-btn" data-width="832" data-height="1216" data-category="portrait">
+                            <div class="ratio-icon portrait"></div>
+                            <div class="ratio-label">2:3 (832×1216)</div>
+                            <div class="ratio-hint">Для портретов</div>
+                        </button>
+                        <button class="ratio-btn" data-width="768" data-height="1344" data-category="portrait">
+                            <div class="ratio-icon tall"></div>
+                            <div class="ratio-label">9:16 (768×1344)</div>
+                            <div class="ratio-hint">Для телефонов</div>
+                        </button>
+                    </div>
+                    <div class="ratio-row">
+                        <button class="ratio-btn" data-width="1024" data-height="1536" data-category="portrait">
+                            <div class="ratio-icon portrait"></div>
+                            <div class="ratio-label">2:3 (1024×1536)</div>
+                            <div class="ratio-hint">Высокое качество</div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Пользовательский размер -->
+            <div class="custom-size-section">
+                <h4 class="ratio-category-title">Пользовательский размер</h4>
+                <div class="custom-size-controls">
+                    <div class="custom-size-field">
+                        <label>Ширина</label>
+                        <input type="number" id="custom-width-input" min="384" max="2048" step="32" value="1024">
+                    </div>
+                    <span class="custom-size-separator">×</span>
+                    <div class="custom-size-field">
+                        <label>Высота</label>
+                        <input type="number" id="custom-height-input" min="384" max="2048" step="32" value="1024">
+                    </div>
+                    <button class="custom-size-apply" id="apply-custom-size">Применить</button>
+                </div>
+                <div class="custom-size-hint">Допустимые размеры: от 384 до 2048 пикселей, кратные 32.</div>
+            </div>
+            
+            <!-- Превью соотношения сторон -->
+            <div class="ratio-preview-section">
+                <div class="ratio-preview-title">Предпросмотр соотношения сторон</div>
+                <div class="ratio-preview" id="ratio-preview-box">
+                    <div class="preview-frame" id="ratio-preview-frame" style="width: 160px; height: 160px; left: 20px; top: 20px;"></div>
+                    <div class="preview-guides">
+                        <div class="guide horizontal-top"></div>
+                        <div class="guide horizontal-center"></div>
+                        <div class="guide horizontal-bottom"></div>
+                        <div class="guide vertical-left"></div>
+                        <div class="guide vertical-center"></div>
+                        <div class="guide vertical-right"></div>
+                    </div>
+                    <div class="preview-figure"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно количества генераций -->
+    <div class="count-modal" id="count-modal">
+        <div class="count-header">
+            <h3 class="count-title">Количество генераций</h3>
+            <button class="count-close" data-modal-id="count-modal">×</button>
+        </div>
+        
+        <div class="count-options" id="count-options-container">
+            <div class="count-option active" data-count="1">
+                <div class="count-value">1</div>
+                <div class="count-label">Изображение</div>
+            </div>
+            <div class="count-option" data-count="2">
+                <div class="count-value">2</div>
+                <div class="count-label">Изображения</div>
+            </div>
+            <div class="count-option" data-count="3">
+                <div class="count-value">3</div>
+                <div class="count-label">Изображения</div>
+            </div>
+            <div class="count-option" data-count="4">
+                <div class="count-value">4</div>
+                <div class="count-label">Изображения</div>
+            </div>
+        </div>
+        
+        <div class="count-info">
+            Примечание: При использовании модели GPT Image доступна генерация только одного изображения за раз. Все изображения генерируются с разными случайными значениями seed (если включено).
+        </div>
+    </div>
+
+    <!-- Модальное окно подтверждения действия -->
+    <div class="modal-overlay" id="confirm-dialog-modal">
+        <div class="modal-container" style="width: 400px; max-width: 90%;">
+            <div class="modal-header">
+                <h3 class="modal-title" id="confirm-dialog-title">Подтверждение</h3>
+                <button class="modal-close" data-modal-id="confirm-dialog-modal">×</button>
+            </div>
+            <div class="modal-content" style="padding: 24px;">
+                <p id="confirm-dialog-message" style="margin-bottom: 24px; line-height: 1.5; color: var(--text-primary);">Вы уверены?</p>
+                <div class="modal-actions">
+                    <button class="action-btn" id="confirm-dialog-cancel-btn">Отмена</button>
+                    <button class="action-btn" id="confirm-dialog-confirm-btn" style="background-color: var(--danger); border-color: var(--danger);">Подтвердить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно загрузки файла референса -->
+    <div class="upload-modal" id="upload-ref-modal">
+        <div class="upload-header">
+            <h3 class="upload-title">Загрузить референс</h3>
+            <button class="upload-close" data-modal-id="upload-ref-modal">×</button>
+        </div>
+        
+        <div class="upload-content">
+            <div class="upload-dropzone" id="upload-ref-dropzone">
+                <div class="upload-dropzone-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" viewBox="0 0 16 16">
+                        <path d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383z"/>
+                        <path d="M7.646 4.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V14.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3z"/>
+                    </svg>
+                </div>
+                <div class="upload-dropzone-text">Перетащите файл сюда или нажмите для выбора</div>
+                <div class="upload-dropzone-hint">Поддерживаются JPG, PNG, GIF до 1.5 МБ (после сжатия)</div>
+            </div>
+            
+            <input type="file" id="ref-file-upload-input" style="display: none;" accept="image/*">
+            
+            <div class="upload-preview" id="upload-ref-preview-area">
+                <img id="upload-ref-preview-image" src="" alt="Предпросмотр">
+                <div class="upload-options">
+                    <div class="upload-option-group">
+                        <label class="upload-option-label">Тип изображения:</label>
+                        <select id="upload-ref-image-type" class="ref-type-select">
+                            <option value="Персонаж" selected>Персонаж</option>
+                            <option value="Место">Место</option>
+                            <option value="Стиль">Стиль</option>
+                            <option value="Предмет">Предмет</option>
+                            <option value="Другое">Другое</option>
+                        </select>
+                    </div>
+                     <div class="upload-option-group">
+                        <label class="upload-option-label">Чувствительность (слов для описания):</label>
+                        <div style="display: flex; align-items: center; gap: 10px;">
+                            <input type="range" id="upload-ref-sensitivity-slider" min="0" max="50" value="15" class="ref-sensitivity-slider" style="flex-grow: 1;">
+                            <span id="upload-ref-sensitivity-value" class="sensitivity-value" style="min-width: 60px;">15 слов</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="upload-ref-loader" style="text-align: center; display: none; margin-top: 10px;">
+                <div class="loader" style="display: inline-block; width: 20px; height: 20px; border: 2px solid var(--bg-dark); border-top: 2px solid var(--accent); border-radius: 50%; animation: spin 1s linear infinite;"></div>
+                <span style="margin-left: 10px; color: var(--text-secondary);">Обработка...</span>
+            </div>
+            
+            <div class="upload-actions">
+                <button class="upload-cancel" id="upload-ref-cancel-btn">Отмена</button>
+                <button class="upload-submit" id="upload-ref-submit-btn" disabled>Загрузить</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Подключение скриптов -->
+    <!-- Сначала зависимости или общие модули, затем основной -->
+    <script type="module" src="js/api.js"></script>
+    <script type="module" src="js/references.js"></script>
+    <script type="module" src="js/generator.js"></script>
+    <script type="module" src="js/ui.js"></script>
+    <script type="module" src="js/main.js"></script> <!-- main.js тоже должен быть модулем, т.к. он импортирует другие -->
+</body>
+</html>

@@ -1,0 +1,114 @@
+[
+  {
+    "id": "none",
+    "name": "Нет",
+    "image": "asset/img/styles/none.jpg",
+    "prompt": "",
+    "defaultEnhance": true
+  },
+  {
+    "id": "anime",
+    "name": "Аниме",
+    "image": "asset/img/styles/anime.jpg",
+    "prompt": "anime style, Studio Ghibli, soft colors, detailed, painterly",
+    "defaultEnhance": true
+  },
+  {
+    "id": "dc_comics",
+    "name": "DC Комикс",
+    "image": "asset/img/styles/dc_comics.jpg",
+    "prompt": "comic book style, bold lines, DC Comics, Jim Lee art style",
+    "defaultEnhance": true
+  },
+  {
+    "id": "manga",
+    "name": "Манга",
+    "image": "asset/img/styles/manga.jpg",
+    "prompt": "manga style illustration, clean linework, expressive characters",
+    "defaultEnhance": true
+  },
+  {
+    "id": "cartoon",
+    "name": "Мультфильм",
+    "image": "asset/img/styles/cartoon.jpg",
+    "prompt": "Pixar style 3D animation, detailed texturing, expressive characters",
+    "defaultEnhance": true
+  },
+  {
+    "id": "realistic",
+    "name": "Реалистичный",
+    "image": "asset/img/styles/realistic.jpg",
+    "prompt": "photorealistic, detailed, high quality photography, natural lighting",
+    "defaultEnhance": true
+  },
+  {
+    "id": "painting",
+    "name": "Живопись",
+    "image": "asset/img/styles/painting.jpg",
+    "prompt": "digital painting, painterly, artistic, colorful, detailed brushstrokes",
+    "defaultEnhance": true
+  },
+  {
+    "id": "sketch",
+    "name": "Скетч",
+    "image": "asset/img/styles/sketch.jpg",
+    "prompt": "hand-drawn sketch, pencil drawing, clean linework, minimal color",
+    "defaultEnhance": false
+  },
+  {
+    "id": "3d",
+    "name": "3D рендер",
+    "image": "asset/img/styles/3d.jpg",
+    "prompt": "3D render, volumetric lighting, defined textures, CGI",
+    "defaultEnhance": true
+  },
+  {
+    "id": "pixel",
+    "name": "Пиксель-арт",
+    "image": "asset/img/styles/pixel.jpg",
+    "prompt": "pixel art style, 8-bit, blocky, low resolution, simple shapes",
+    "defaultEnhance": false
+  },
+  {
+    "id": "gravity_falls",
+    "name": "Гравити Фолс",
+    "image": "asset/img/styles/gravity_falls.jpg",
+    "prompt": "Gravity Falls cartoon style, warm colors, quirky proportions",
+    "defaultEnhance": true
+  },
+  {
+    "id": "bobs_burgers",
+    "name": "Бобсбургер",
+    "image": "asset/img/styles/bobs_burgers.jpg",
+    "prompt": "Bob's Burgers animation style, flat colors, simple outlines",
+    "defaultEnhance": true
+  },
+  {
+    "id": "lego",
+    "name": "Лего",
+    "image": "asset/img/styles/lego.jpg",
+    "prompt": "LEGO minifigure style, plastic texture, blocky form",
+    "defaultEnhance": true
+  },
+  {
+    "id": "rick_morty",
+    "name": "Рик и Морти",
+    "image": "asset/img/styles/rick_morty.jpg",
+    "prompt": "Adult animated series style, simple lines, large eyes with small pupils, weird sci-fi setting, Rick and Morty cartoon aesthetic",
+    "defaultEnhance": false 
+  },
+  {
+    "id": "south_park",
+    "name": "Саут Парк",
+    "image": "asset/img/styles/south_park.jpg",
+    "prompt": "South Park style, simple flat characters, basic shapes, minimal details",
+    "defaultEnhance": true
+  },
+  {
+    "id": "simpsons",
+    "name": "Симпсоны",
+    "image": "asset/img/styles/simpsons.jpg",
+    "prompt": "The Simpsons style, yellow skin tones, overbite, bulging eyes",
+    "defaultEnhance": true
+  }
+]

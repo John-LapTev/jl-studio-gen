@@ -1,0 +1,45 @@
+{
+  "config": {
+    "imageAnalysisModel": "openai-large", 
+    "textProcessingModel": "openai" 
+  },
+  "availableImageModels": ["flux", "turbo", "gptimage"],
+  "defaultImageModel": "flux",
+  "imageModelDetails": [
+    {
+      "id": "flux",
+      "name": "Flux (Shnell)",
+      "description": "Быстрая модель среднего качества. Качество генераций сильно зависит от хорошего промта.",
+      "isDefault": true,
+      "stats": {
+        "speed": "Высокое",
+        "quality": "Среднее",
+        "filter": "Нейтральное"
+      }
+    },
+    {
+      "id": "turbo",
+      "name": "Turbo",
+      "description": "Модель, ориентированная на реализм. Несмотря на название, скорость генерации средняя. Качество генераций низкое, но всё зависит от промта.",
+      "isDefault": false,
+      "stats": {
+        "speed": "Среднее",
+        "quality": "Низкое",
+        "filter": "Строгий"
+      }
+    },
+    {
+      "id": "gptimage",
+      "name": "GPT Image",
+      "description": "Лучший выбор по качеству генерации. Скорость низкая, часто сбоит и сильно придирается к промтам, особенно в отношении авторских прав.",
+      "isDefault": false,
+      "badge": "Лучшее качество",
+      "stats": {
+        "speed": "Низкое",
+        "quality": "Высокое",
+        "filter": "Очень строгий"
+      },
+      "notes": "Доступна генерация только одного изображения за раз."
+    }
+  ]
+}
